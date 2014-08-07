@@ -1,0 +1,158 @@
+<html>
+
+<head>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type="text/javascript" src="promise.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        var high = function() {
+            return new Promise(function(fulfill, reject) {
+                $.ajax({
+                    url: 'http://localhost:8080/hii',
+                    dataType: 'json',
+                    cache: false
+                }).done(function(data) {
+
+
+                    callbackFunction(data).then(function(res) {
+                        if (1) {
+                            fulfill(res);
+
+                        } else
+                            reject("a");
+                    });
+                });
+            });
+        }
+        var gaugeData = [];
+        var gData = [];
+        var mindAppData = [];
+        var instanceLocation="";
+        var callbackFunction = function(data) {
+            return new Promise(function(fulfill, reject) {
+                var sumOfMindapps = 0;
+                gaugeData = [];
+                var az = ['Label', 'Value'];
+                gaugeData.push(az);
+                gData.push(az);
+                var keys = Object.keys(data);
+                //console.log(keys);
+                for (var i = 1; i < keys.length; i++) {
+                    var a = [];
+                    //console.log(typeof(data[keys[i]]));
+                    if (typeof(data[keys[i]]) === "object") {
+                        console.log(keys[i]);
+
+
+                        if (keys[i] === "mindapps") {
+                            var subKeys = Object.keys(data[keys[i]]);
+                            for (var j = 0; j < subKeys.length; j++) {
+                                var b = [];
+                                b.push(subKeys[j]);
+                                b.push((data[keys[i]])[subKeys[j]]);
+                                //console.log((data[keys[i]])[subKeys[j]]);
+                                //a.push(b);
+                                //console.log(b);
+                                mindAppData.push(b);
+                                b = [];
+                                //a.push(data[keys[subKeys[j]]]);
+                            }
+                        }
+
+
+                    } else {
+                        if (keys[i] === "reading-activity") {
+                            //if(parseInt(data[keys[i]]) === 50000 &&
+                            a.push(keys[i]);
+                            a.push(data[keys[i]]);
+                            gaugeData.push(a);
+                        }
+                        else if(keys[i] === "instance-location")
+                        {
+                            instanceLocation=data[keys[i]];
+                        }
+
+                    }
+
+                    //console.log(a);
+                    a = [];
+                }
+                //console.log(mindAppData,"mindAppData");
+                for (i in mindAppData)
+                    gaugeData.push(mindAppData[i]);
+                mindAppData=[];
+                mindAppData.push(instanceLocation);
+                //for(var j=2; j<gaugeData.length;j++)
+                //{
+                    //console.log(gaugeData[j][1], "a");
+                    if(parseInt(gaugeData[1][1]) === 50000 && parseInt(gaugeData[2][1]) !== 50000 && parseInt(gaugeData[3][1]) !== 50000 && parseInt(gaugeData[4][1]) !== 50000)
+                    {
+                        sumOfMindapps+=parseInt(gaugeData[2][1]) + parseInt(gaugeData[3][1]) + parseInt(gaugeData[4][1]);
+                        sumOfMindapps = sumOfMindapps/3;
+                        mindAppData.push(sumOfMindapps);
+                    }   
+                    else
+                    {
+
+                        sumOfMindapps+=parseInt(gaugeData[1][1]) + parseInt(gaugeData[2][1]) + parseInt(gaugeData[3][1]) + parseInt(gaugeData[4][1]);
+                        sumOfMindapps = sumOfMindapps/4;
+                        mindAppData.push(sumOfMindapps);
+                    }
+                //}
+                //console.log(sumOfMindapps);
+                gData.push(mindAppData);
+                mindAppData=[];
+                fulfill(gData);
+            });
+
+
+        }
+
+         //function loadGauge(){
+
+
+        google.load('visualization', '1', {
+            packages: ['gauge']
+        });
+
+
+        google.setOnLoadCallback(drawChart);
+
+
+
+        function drawChart() {
+                gaugeData=[];
+                gData=[];
+                console.log('drawChart called');
+
+                high().then(function(res) {
+                    console.log(res);
+                    var data = google.visualization.arrayToDataTable(res);
+
+                    console.log("a");
+
+                    var options = {
+                        width: 600,
+                        height: 180,
+                        redFrom: 40000,
+                        redTo: 50000,
+                        yellowFrom: 20000,
+                        yellowTo: 40000,
+                        minorTicks: 5,
+                        max: 50000
+                    };
+
+                    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                });
+            }
+            //loadGauge();    
+        setInterval(drawChart, 120000);
+    </script>
+</head>
+
+<body>
+    <div id='chart_div'></div>
+</body>
+
+</html>

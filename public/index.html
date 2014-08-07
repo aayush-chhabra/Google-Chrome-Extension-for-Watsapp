@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>DashBoard!!</title>
+	<style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      #formElements { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      #click { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+	<script type="text/javascript">
+	var socket = io();
+	$(document).ready(function(){
+		var number, message;
+		$("#click").click(function(){
+			alert("a");
+			number = $("#_number_id").val();
+			message = $("#_message_id").val();
+			var url="/"+number+"/"+message;
+			//console.log(url);
+			//window.location.href=url;
+			socket.emit("message", number, message);
+
+		});
+	});
+	socket.on('chat message', function(msg){
+	    $('#messages').append($('<li>').text(msg));
+	  });
+	</script>
+</head>
+<body id="a">
+	<ul id="messages"></ul>
+	<div id="formElements">
+		<input type="text" id="_number_id" placeholder="Number">
+		<input type="text" id="_message_id" placeholder="Message">
+		<input type="button" id="click" value="Click Me!!">
+	</div>
+</body>
+</html>
