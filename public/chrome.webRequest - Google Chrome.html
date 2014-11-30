@@ -1,0 +1,3111 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://developer.chrome.com/extensions/webRequest#event-onErrorOccurred -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+    <link type="image/ico" rel="icon" href="https://www.google.com/images/icons/product/chrome-32.png">
+
+    <link href="./chrome.webRequest - Google Chrome_files/site.css" rel="stylesheet" type="text/css">
+    <link href="./chrome.webRequest - Google Chrome_files/print.css" rel="stylesheet" type="text/css" media="print">
+    <link href="./chrome.webRequest - Google Chrome_files/prettify.css" rel="stylesheet" type="text/css">
+    <link href="./chrome.webRequest - Google Chrome_files/css" rel="stylesheet" type="text/css">
+
+<script src="./chrome.webRequest - Google Chrome_files/cb=gapi.loaded_1" async=""></script><script src="./chrome.webRequest - Google Chrome_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./chrome.webRequest - Google Chrome_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" async="" src="./chrome.webRequest - Google Chrome_files/cse.js"></script><script async="" src="./chrome.webRequest - Google Chrome_files/analytics.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41980257-1');
+  ga('create', 'UA-49880327-5', {'name': 'chromeDocs'});
+  ga('send', 'pageview');
+  ga('chromeDocs.send', 'pageview');
+
+</script><style type="text/css"></style>
+
+    <title>chrome.webRequest - Google Chrome</title>
+  <script src="./chrome.webRequest - Google Chrome_files/jsapi" type="text/javascript"></script><link type="text/css" href="./chrome.webRequest - Google Chrome_files/default+en.css" rel="stylesheet"><link type="text/css" href="./chrome.webRequest - Google Chrome_files/default.css" rel="stylesheet"><script type="text/javascript" src="./chrome.webRequest - Google Chrome_files/default+en.I.js"></script><script type="text/javascript" src="https://www.google.com/uds/api/ads/3.0/9bf006238154b3063dc4926b55487580/search.I.js"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+border-color: #D9D9D9;
+}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+border-color: #666666;
+background-color: #CECECE;
+background-image: none;
+filter: none;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-color: #FF9900;
+border-bottom-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #FF9900;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #0000CC;
+}
+.gsc-cursor-page {
+color: #0000CC;
+}
+a.gsc-trailing-more-results:link {
+color: #0000CC;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #000000;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #FF9900;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #0000CC;
+}
+.gsc-completion-snippet {
+color: #000000;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}
+</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gscsep_a{display:none}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 9px}.gsib_a{padding-right:8px;padding-left:8px}.gsst_a{padding-top:3px}.gssb_e{border:0}.gssb_l{margin:5px 0}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gscsep_a{display:none}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 2px}.gssb_e{border:0}.gssb_l{margin:5px 0}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+
+  <body>
+    <div id="gc-container">
+    <a href="https://developer.chrome.com/extensions/webRequest#gc-pagecontent" class="element-invisible element-focusable">Skip to main content</a>
+
+    <header id="topnav" role="banner">
+      <div id="logo">
+        <a href="https://developer.chrome.com/">
+          <img alt="Chrome: developer" src="./chrome.webRequest - Google Chrome_files/chrome-logo_2x.png">
+        </a>
+        <span class="collase-icon"><!-- <img src="/static/images/burger-icon.png" class="collase-icon">--></span>
+      </div>
+      <nav id="fatnav" role="navigation">
+      <ul>
+          <li class="pillar">
+            <span class="toplevel">Devtools</span>
+            <ul class="expandee">
+                <li class="submenu">Learn Basics
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/index">
+                        Overview
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/authoring-development-workflow">
+                        Development Workflow
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/console">
+                        Using the Console
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/tips-and-tricks">
+                        Tips &amp; Tricks
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/videos">
+                        Additional Resources
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/devtools/docs/videos">Videos</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/blog-posts">Blog Posts</a>
+                            </li>
+                            <li><a href="https://groups.google.com/forum/?fromgroups#!forum/google-chrome-developer-tools">Mailing List</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/contributing">Contributing to DevTools</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Use Tools
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/dom-and-styles">
+                        Inspecting &amp; Tweaking
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/devtools/docs/dom-and-styles">Editing Styles and the DOM</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/css-preprocessors">Working with CSS Preprocessors</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/resource-panel">Managing Application Storage</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/javascript-debugging">
+                        Debugging JavaScript
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/mobile-emulation">
+                        Mobile Emulation
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/remote-debugging">
+                        Remote Debugging on Android
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/workspaces">
+                        Saving Changes with Workspaces
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Performance &amp; Profiling
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/network">
+                        Evaluating Network Performance
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/timeline">
+                        Using the Timeline
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/demos/too-much-layout/index">
+                        Timeline Demo: Layout Thrashing
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/cpu-profiling">
+                        Profiling JavaScript Performance
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/javascript-memory-profiling">
+                        JavaScript Memory Profiling
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/devtools/docs/javascript-memory-profiling">JavaScript Memory Profiling</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/heap-profiling-summary">Demos</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Reference
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/console-api">
+                        Console API Reference
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/commandline-api">
+                        Command Line API Reference
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/integrating">
+                        DevTools Extensions API
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/devtools/docs/integrating">Integrating with DevTools</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/sample-extensions">Sample DevTools Extensions</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/debugging-clients">Sample DevTools Protocol Clients</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/shortcuts">
+                        Keyboard Shortcuts
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/settings">
+                        Settings
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">
+                        Remote Debugging Protocol
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/devtools/docs/debugger-protocol">Remote Debugging Protocol</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/protocol/1.1/index">Version 1.1</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/protocol/1.0/index">Version 1.0</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/protocol/0.1/index">Version .1</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/devtools/docs/protocol/tot/index">Tip-of-tree</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+            </ul>
+          </li>
+          <li class="pillar">
+            <span class="toplevel">Multi-device</span>
+            <ul class="expandee">
+                <li class="submenu">Getting Started
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/index">
+                        Chrome for a Multi-Device World
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/data-compression">
+                        Data Compression Proxy
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/user-agent">
+                        User Agents
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/mobile-emulation">
+                        Mobile Emulation
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/devtools/docs/remote-debugging">
+                        Remote Debugging
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/faq">
+                        FAQ
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Chrome for Android
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/android/overview">
+                        Overview
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/android/intents">
+                        Android Intents with Chrome
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">
+                        Add to Homescreen
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Chrome WebView
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/webview/overview">
+                        WebView for Android
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/webview/gettingstarted">
+                        Getting Started
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/webview/pixelperfect">
+                        Pixel-Perfect UI
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/webview/workflow">
+                        WebView Workflow
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/webview/tipsandtricks">
+                        Tips &amp; Tricks
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Chrome for iOS
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/ios/overview">
+                        Overview
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/ios/links">
+                        Opening Links in Chrome
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/multidevice/ios/case-studies">
+                        Case Studies
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/multidevice/ios/case-studies">Case Studies</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/multidevice/ios/pocket">Pocket</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/multidevice/ios/feedly">Feedly</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+            </ul>
+          </li>
+          <li class="pillar">
+            <span class="toplevel">Platform</span>
+            <ul class="expandee">
+                <li class="submenu">Apps
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/about_apps">
+                        Learn Basics
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/about_apps">What Are Chrome Apps?</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/first_app">Create Your First App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_architecture">App Architecture</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_lifecycle">App Lifecycle</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/contentSecurityPolicy">Content Security Policy</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/app_codelab1_setup">
+                        Learn with Codelab
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab1_setup">1 - Set Up Development Environment</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab2_basic">2 - Create Basic App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab3_mvc">3 - Create MVC</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab5_data">4 - Save &amp; Fetch Data</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab6_lifecycle">5 - Manage App Lifecycle</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab7_useridentification">6 - Access User's Data</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab8_webresources">7 - Access Web Resources</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_codelab_10_publishing">8 - Publish App</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/samples">
+                        Samples
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/offline_apps">
+                        Develop in the Cloud
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/offline_apps">Offline First</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_external">Handling External Content</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_storage">Storing Data</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/inform_users">Keep Users Informed</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/cloudMessaging">Cloud Messaging</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/richNotifications">Rich Notifications</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_identity">User Authentication</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/app_usb">
+                        User Low-Level System Services
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/app_usb">USB</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_serial">Serial</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_network">Network Communications</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_bluetooth">Bluetooth</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/app_frameworks">
+                        MVC Architecture &amp; Frameworks
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/app_frameworks">About MVC Architecture</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/angular_framework">Build Apps with AngularJS</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/sencha_framework">Build Apps with SenchaJS</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/game_engines">Game Engines</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/publish_app">
+                        Distribute Apps
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/publish_app">Publish Your App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/chrome_apps_on_mobile">Run Chrome Apps on Mobile</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/google_wallet">Monetize Your App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/one_time_payments">One-Time Payments</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/analytics">Analytics</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/api_index">
+                        Chrome Platform APIs
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/api_index">JavaScript APIs</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/manifest">Manifest File Format</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/tags/webview">Webview Tag</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/api_other">Web APIs</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/apps/app_deprecated">Disabled Web Features</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/apps/faq">
+                        Help
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/apps/faq">FAQ</a>
+                            </li>
+                            <li><a href="https://groups.google.com/a/chromium.org/forum/#!forum/chromium-apps">Google Groups</a>
+                            </li>
+                            <li><a href="http://stackoverflow.com/questions/tagged/google-chrome-app">Stack Overflow</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Extensions
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/overview">
+                        Learn Basics
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/extensions/overview">Overview</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/hosting_changes">Hosting Changes</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/single_purpose">Extension Quality Guidelines FAQ</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/event_pages">Event Pages</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/content_scripts">Content Scripts</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/activeTab">activeTab Permission</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/whats_new">What's New?</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/getstarted">
+                        Getting Started Tutorial
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/samples">
+                        Samples
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/tut_migration_to_manifest_v2">
+                        Develop Extensions
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/extensions/a11y">Accessibility</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/contentSecurityPolicy">Content Security Policy</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/xhr">Cross-Origin XHR</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/tut_debugging">Debugging</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/i18n">Internationalization</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/messaging">Message Passing</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/tut_migration_to_manifest_v2">Migrate to Manifest 2</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/tut_oauth">OAuth</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/hosting">
+                        Distribute Extensions
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/extensions/hosting">Hosting</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/packaging">Packaging</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/one_time_payments">One-Time Payments</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/autoupdate">Autoupdating</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/external_extensions">Other Deployment Options</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/tut_analytics">Google Analytics</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/themes">Publishing Themes</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/api_index">
+                        Chrome Platform APIs
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/extensions/api_index">JavaScript APIs</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/manifest">Manifest File Format</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/api_other">Web APIs</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/permission_warnings">Permission Warnings</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/permissions">Optional Permissions</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/extensions/match_patterns">Match Patterns</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/extensions/faq">
+                        Help
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/extensions/faq">FAQ</a>
+                            </li>
+                            <li><a href="https://groups.google.com/a/chromium.org/forum/#!forum/chromium-extensions">Google Groups</a>
+                            </li>
+                            <li><a href="http://stackoverflow.com/tags/google-chrome-extension/info">Stack Overflow</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Native Client
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/overview">
+                        Learn Basics
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/overview">What Is Native Client?</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/nacl-and-pnacl">NaCl and PNaCl</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/sdk/download">
+                        SDK
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/sdk/download">Download SDK</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/sdk/examples">Examples</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/sdk/release-notes">SDK Release Notes</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/devguide/tutorial/tutorial-part1">
+                        Tutorial
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/tutorial/tutorial-part1">Part 1: Simple PNaCl Web App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/tutorial/tutorial-part2">Part 2: SDK Build System and Chrome Apps</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/devguide/devcycle/building">
+                        Development Cycle
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/devcycle/building">Building</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/devcycle/running">Running</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/devcycle/debugging">Debugging</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/devcycle/vs-addin">Debugging with Visual Studio</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/devcycle/dynamic-loading">Dynamic Linking and Loading with GlibC</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/devguide/coding/application-structure">
+                        Coding Your Application
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/application-structure">Application Structure</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/native-client-modules">Native Client Modules</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/3D-graphics">3D Graphics</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/audio">Audio</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/file-io">File I/O</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/nacl_io">The nacl_io Library</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/message-system">Messaging System</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/progress-events">Progress Events</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/url-loading">URL Loading</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/devguide/coding/view-focus-input-events">View Change, Focus, &amp; Input Events</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/devguide/distributing">
+                        Distribute Your Apps
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/pepper_stable/index">
+                        Pepper API Reference
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/c/group___interfaces">Pepper C Interfaces</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/c/group___structs">Pepper C Structures</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/c/group___functions">Pepper C Functions</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/c/group___enums">Pepper C Enums</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/c/group___typedefs">Pepper C Typedefs</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/c/global_defs">Pepper C Macros</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/pepper_stable/cpp/inherits">Pepper C++ Classes</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/glossary">
+                        Additional Reference &amp; Versions
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/glossary">Glossary</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/reference/nacl-manifest-format">Native Client Manifest (nmf) Format</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/reference/pnacl-bitcode-abi">PNaCl Bitcode Reference Manual</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/reference/pnacl-undefined-behavior">PNaCl Undefined Behavior</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/reference/pnacl-c-cpp-language-support">PNaCl C/C++ Language Support</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/reference/sandbox_internals/index">Sandbox Internals</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/reference/design-docs">Design Documents</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/native-client/faq">
+                        Help
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/native-client/faq">FAQ</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/help">Forums &amp; Issues Tracker</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/publications-and-presentations">Publications &amp; Presentations</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/native-client/community/security-contest/index">Security Contest Archive</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li class="submenu">Store
+                  <ul>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/index">
+                        What Is the Chrome Web Store?
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/overview">
+                        What Can You Publish?
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/get_started_simple">
+                        Tutorial: Getting Started
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/samples">
+                        Samples
+                        </a>
+                        <ul>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/branding">
+                        Branding
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/webstore/branding">Branding Guidelines</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/images">Supplying Images</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/money">
+                        Monetizing
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/webstore/money">Monetizing Your App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/identify_user">Using Google Accounts</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/check_for_payment">Checking for Payment</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/one_time_payments">One-Time Payments</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/pricing">Pricing</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/publish">
+                        Publishing
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/webstore/publish">Publishing Tutorial</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/i18n">Internationalizing Your App</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/inline_installation">Using Inline Installation</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/rating">Rating Guidelines</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/program_policies">Program Policies</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/terms">Terms of Service</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li class="category">
+                        <a href="https://developer.chrome.com/webstore/best_practices">
+                        Help
+                        </a>
+                        <ul>
+                            <li><a href="https://developer.chrome.com/webstore/best_practices">Best Practices</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/faq">FAQ</a>
+                            </li>
+                            <li><a href="https://groups.google.com/a/chromium.org/forum/#!forum/chromium-apps">Google Groups</a>
+                            </li>
+                            <li><a href="https://developer.chrome.com/webstore/articles">Articles</a>
+                            </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+            </ul>
+          </li>
+        <li id="search">
+          <img src="./chrome.webRequest - Google Chrome_files/search.png">
+          <div class="expandee">
+      
+      <!-- override search styles set globally by site.css -->
+      <style>
+      .gsc-above-wrapper-area, .gsc-result-info {
+        font-size: 11px;
+      }
+      .gs-webResult div, .gs-result div {
+        line-height: initial;
+      }
+      .gs-webResult a, .gs-result a {
+        text-decoration: none;
+      }
+      td.gcsc-branding-img-noclear, .gcsc-branding-img-noclear a {
+        width: 51px;
+        height: 15px;
+        vertical-align: top;
+      }
+      .gsc-table-result, .gsc-thumbnail-inside, .gsc-url-top {
+        padding: 0;
+      }
+      .gsc-control-cse tr, .gsc-control-cse td, .gsc-control-cse th {
+       padding: inherit;
+       border: none;
+      }
+      .gsc-control-cse {
+        white-space: normal;
+        border: none;
+        padding: 0 1em;
+      }
+      #search .gsc-control-cse img {
+        height: inherit;
+        width: inherit;
+      }
+      .gsc-control-cse table {
+        margin: initial;
+      }
+      .gsc-control-cse * {
+        box-sizing: initial;
+        -webkit-box-sizing: initial;
+        -moz-box-sizing: initial;
+      }
+      #fatnav .expandee .gsc-control-cse a {
+       padding: 0;
+       color: inherit;
+      }
+      </style>
+      
+            <form id="chrome-docs-cse-search-form" action="https://google.com/cse">
+              <input type="search" id="chrome-docs-cse-input" name="q" placeholder="What are you looking for?" dir="ltr" autocomplete="off" spellcheck="false" style="outline: none;">
+              <input type="hidden" name="cx" value="010997258251033819707:7owyldxmpkc">
+              <input type="hidden" name="ie" value="UTF-8">
+            <input type="hidden" name="oq"><input type="hidden" name="gs_l"></form>
+            <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr" style="visibility: hidden;"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8" style="display: none;"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 " style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: -0.0625em 0px 0px; height: 1.25em; outline: none; background: url(https://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif) 0% 50% no-repeat rgb(255, 255, 255);"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;"><span class="gscb_a" id="gs_cb50">×</span></a></div></td></tr></tbody></table></div><input type="hidden" name="bgresponse" id="bgresponse"></td><td class="gsc-search-button"><input type="image" src="./chrome.webRequest - Google Chrome_files/search_box_icon.png" class="gsc-search-button gsc-search-button-v2" title="search"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="./chrome.webRequest - Google Chrome_files/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form><div class="gsc-results-wrapper-nooverlay"><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div><div class="gsc-tabsAreaInvisible"></div><div class="gsc-above-wrapper-area-invisible"><table cellspacing="0" cellpadding="0" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table cellspacing="0" cellpadding="0" class="gsc-resultsHeader"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div></div></div></div></div></div></div>
+          </div>
+        </li>
+      </ul>
+      </nav>
+          </header>
+
+    <main id="gc-pagecontent" role="main">
+
+
+<article>
+  <div itemprop="articleBody" class="api">
+    <h1>chrome.webRequest</h1>
+    <table class="intro" id="intro">
+      <tbody><tr>
+        <td class="title">Description:</td>
+        <td>
+            Use the <code>chrome.webRequest</code> API to observe and analyze traffic and to intercept, block, or modify requests in-flight.
+                    <br>
+        </td>
+      </tr>
+      <tr>
+        <td class="title">Availability:</td>
+        <td>
+            Since Chrome 17.
+            <br>
+        </td>
+      </tr>
+      <tr>
+        <td class="title">Permissions:</td>
+        <td>
+            <span class="code">
+            "webRequest"
+                    </span>
+            <br>
+            <a href="https://developer.chrome.com/extensions/declare_permissions#host-permissions">
+            host permissions
+                    </a>
+            <br>
+        </td>
+      </tr>
+    </tbody></table>
+    <section>
+      <h2 id="manifest">Manifest</h2>
+      <p>You must declare the "webRequest" permission in the <a href="https://developer.chrome.com/extensions/manifest">extension manifest</a> to use the web request
+      API, along with <a href="https://developer.chrome.com/extensions/declare_permissions">host permissions</a>
+      for any hosts whose network requests you want to access. If you want to
+      use the web request API in a blocking fashion, you need to request
+      the "webRequestBlocking" permission in addition.
+      For example:</p>
+      <pre data-filename="manifest.json" class="prettyprint"><span class="pln">      </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"My extension"</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">...</span><span class="pln">
+        </span><b><span class="str">"permissions"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+          </span><span class="str">"webRequest"</span><span class="pun">,</span><span class="pln">
+          </span><span class="str">"*://*.google.com/"</span><span class="pln">
+        </span><span class="pun">]</span></b><span class="pun">,</span><span class="pln">
+        </span><span class="pun">...</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+      </span></pre>
+      
+      <h2 id="life_cycle">Life cycle of requests</h2>
+      
+      <p>
+      The web request API defines a set of events that follow the life cycle of a web
+      request. You can use these events to observe and analyze traffic. Certain
+      synchronous events will allow you to intercept, block, or modify a request.
+      </p>
+      
+      <p>
+      The event life cycle for successful requests is illustrated here, followed by
+      event definitions:<br>
+      <img src="./chrome.webRequest - Google Chrome_files/webrequestapi.png" width="385" height="503" alt="Life cycle of a web request from the perspective of the webrequest API" style="margin-left: auto; margin-right: auto; display: block">
+      </p>
+      
+      <p>
+      </p><dl>
+        <dt><code>onBeforeRequest</code> (optionally synchronous)</dt>
+        <dd>Fires when a request is about to occur. This event is sent before any TCP
+        connection is made and can be used to cancel or redirect requests.</dd>
+        <dt><code>onBeforeSendHeaders</code> (optionally synchronous)</dt>
+        <dd>Fires when a request is about to occur and the initial headers have been
+        prepared. The event is intended to allow extensions to add, modify, and delete
+        request headers <a href="https://developer.chrome.com/extensions/webRequest#life_cycle_footnote">(*)</a>. The
+        <code>onBeforeSendHeaders</code> event is passed to all subscribers, so
+        different subscribers may attempt to modify the request; see the <a href="https://developer.chrome.com/extensions/webRequest#implementation">Implementation details</a> section for how this is
+        handled. This event can be used to cancel the request.</dd>
+        <dt><code>onSendHeaders</code></dt>
+        <dd>Fires after all extensions have had a chance to modify the request
+        headers, and presents the final <a href="https://developer.chrome.com/extensions/webRequest#life_cycle_footnote">(*)</a>
+        version. The event is triggered before the headers are sent to the network.
+        This event is informational and handled asynchronously. It does not allow
+        modifying or cancelling the request.</dd>
+        <dt><code>onHeadersReceived</code> (optionally synchronous)</dt>
+        <dd>Fires each time that an HTTP(S) response header is received. Due
+        to redirects and authentication requests this can happen multiple times per
+        request. This event is intended to allow extensions to add, modify, and delete
+        response headers, such as incoming Set-Cookie headers. The caching directives
+        are processed before this event is triggered, so modifying headers such as
+        Cache-Control has no influence on the browser's cache.
+        It also allows you to redirect the request.</dd>
+        <dt><code>onAuthRequired</code> (optionally synchronous)</dt>
+        <dd>Fires when a request requires authentication of the user. This event can
+        be handled synchronously to provide authentication credentials. Note that
+        extensions may provide invalid credentials. Take care not to enter an infinite
+        loop by repeatedly providing invalid credentials.</dd>
+        <dt><code>onBeforeRedirect</code></dt>
+        <dd>Fires when a redirect is about to be executed. A redirection can be
+        triggered by an HTTP response code or by an extension. This event is
+        informational and handled asynchronously. It does not allow you to modify or
+        cancel the request. </dd>
+        <dt><code>onResponseStarted</code></dt>
+        <dd>Fires when the first byte of the response body is received. For HTTP
+        requests, this means that the status line and response headers are
+        available. This event is informational and handled asynchronously. It does not
+        allow modifying or cancelling the request.</dd>
+        <dt><code>onCompleted</code></dt>
+        <dd>Fires when a request has been processed successfully.</dd>
+        <dt><code>onErrorOccurred</code></dt>
+        <dd>Fires when a request could not be processed successfully.</dd>
+      </dl>
+      The web request API guarantees that for each request either
+      <code>onCompleted</code> or <code>onErrorOccurred</code> is fired as the final
+      event with one exception: If a request is redirected to a <code>data://</code>
+      URL, <code>onBeforeRedirect</code> is the last reported event.
+      <p></p>
+      
+      <p id="life_cycle_footnote">(*) Note that the web request API presents an
+      abstraction of the network stack to the extension. Internally, one URL request
+      can be split into several HTTP requests (for example to fetch individual byte
+      ranges from a large file) or can be handled by the network stack without
+      communicating with the network. For this reason, the API does not provide the
+      final HTTP headers that are sent to the network. For example, all headers that
+      are related to caching are invisible to the extension.</p>
+      
+      <p>The following headers are currently <b>not provided</b> to the
+      <code>onBeforeSendHeaders</code> event. This list is not guaranteed to be
+      complete nor stable.
+      </p><ul>
+        <li>Authorization</li>
+        <li>Cache-Control</li>
+        <li>Connection</li>
+        <li>Content-Length</li>
+        <li>Host</li>
+        <li>If-Modified-Since</li>
+        <li>If-None-Match</li>
+        <li>If-Range</li>
+        <li>Partial-Data</li>
+        <li>Pragma</li>
+        <li>Proxy-Authorization</li>
+        <li>Proxy-Connection</li>
+        <li>Transfer-Encoding</li>
+      </ul>
+      <p></p>
+      
+      <p>
+      The webRequest API only exposes requests that the extension has
+      permission to see, given its
+      <a href="https://developer.chrome.com/extensions/declare_permissions">host permissions</a>.
+      Moreover, only the following schemes are accessible:
+      <code>http://</code>,
+      <code>https://</code>,
+      <code>ftp://</code>,
+      <code>file://</code>, or
+      <code>chrome-extension://</code>.
+      In addition, even certain requests with URLs using one of the above schemes
+      are hidden, e.g.,
+      <code>chrome-extension://other_extension_id</code> where
+      <code>other_extension_id</code> is not the ID of the extension to handle
+      the request,
+      <code>https://www.google.com/chrome</code>,
+      and others (this list is not complete). Also synchronous XMLHttpRequests from
+      your extension are hidden from blocking event handlers in order to prevent
+      deadlocks.
+      Note that for some of the supported schemes the set of available events might be
+      limited due to the nature of the corresponding protocol.
+      For example, for the <q>file:</q> scheme, only <code>onBeforeRequest</code>,
+      <code>onResponseStarted</code>, <code>onCompleted</code>, and
+      <code>onErrorOccurred</code> may be dispatched.
+      </p>
+      
+      <h2 id="concepts">Concepts</h2>
+      
+      <p>As the following sections explain, events in the web request API use request
+      IDs, and you can optionally specify filters and extra information when you
+      register event listeners.</p>
+      
+      <h3 id="Request IDs">Request IDs</h3>
+      
+      <p>Each request is identified by a request ID. This ID is unique within a
+      browser session and the context of an extension. It remains constant during the
+      the life cycle of a request and can be used to match events for the same
+      request. Note that several HTTP requests are mapped to one web request in case
+      of HTTP redirection or HTTP authentication.</p>
+      
+      <h3 id="subscription">Registering event listeners</h3>
+      
+      <p>To register an event listener for a web request, you use a variation on the
+      <a href="https://developer.chrome.com/extensions/events">usual <code>addListener()</code> function</a>.
+      In addition to specifying a callback function,
+      you have to specify a filter argument and you may specify an optional extra info
+      argument.</p>
+      
+      <p>The three arguments to the web request API's <code>addListener()</code> have
+      the following definitions:</p>
+      <pre class="prettyprint"><span class="pln">      </span><span class="kwd">var</span><span class="pln"> callback </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">details</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{...};</span><span class="pln">
+      </span><span class="kwd">var</span><span class="pln"> filter </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{...};</span><span class="pln">
+      </span><span class="kwd">var</span><span class="pln"> opt_extraInfoSpec </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[...];</span><span class="pln">
+      </span></pre>
+      
+      <p>Here's an example of listening for the <code>onBeforeRequest</code>
+      event:</p>
+      <pre class="prettyprint"><span class="pln">      chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeRequest</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span class="pln">
+        callback</span><span class="pun">,</span><span class="pln"> filter</span><span class="pun">,</span><span class="pln"> opt_extraInfoSpec</span><span class="pun">);</span><span class="pln">
+      </span></pre>
+      
+      <p>Each <code>addListener()</code> call takes a mandatory callback function as
+      the first parameter. This callback function is passed a dictionary containing
+      information about the current URL request. The information in this dictionary
+      depends on the specific event type as well as the content of
+      <code>opt_extraInfoSpec</code>.</p>
+      
+      <p>If the optional <code>opt_extraInfoSpec</code> array contains the string
+      <code>'blocking'</code> (only allowed for specific events), the callback
+      function is handled synchronously. That means that the request is blocked until
+      the callback function returns. In this case, the callback can return a
+        <a href="https://developer.chrome.com/extensions/webRequest#type-BlockingResponse">webRequest.BlockingResponse</a> that determines the further
+      life cycle of the request. Depending on the context, this response allows
+      cancelling or redirecting a request (<code>onBeforeRequest</code>), cancelling a
+      request or modifying headers (<code>onBeforeSendHeaders</code>,
+      <code>onHeadersReceived</code>), or providing authentication credentials
+      (<code>onAuthRequired</code>).</p>
+      
+      <p>The <a href="https://developer.chrome.com/extensions/webRequest#type-RequestFilter">webRequest.RequestFilter</a>
+      <code>filter</code> allows limiting the requests for which events are
+      triggered in various dimensions:
+      </p><dl>
+        <dt>URLs</dt>
+        <dd><a href="https://developer.chrome.com/extensions/match_patterns">URL patterns</a> such as
+        <code>*://www.google.com/foo*bar</code>.</dd>
+        <dt>Types</dt>
+        <dd>Request types such as <code>main_frame</code> (a document that is loaded
+        for a top-level frame), <code>sub_frame</code> (a document that is loaded for
+        an embedded frame), and <code>image</code> (an image on a web site).
+        See <a href="https://developer.chrome.com/extensions/webRequest#type-RequestFilter">webRequest.RequestFilter</a>.</dd>
+        <dt>Tab ID</dt>
+        <dd>The identifier for one tab.</dd>
+        <dt>Window ID</dt>
+        <dd>The identifier for a window.</dd>
+      <p></p>
+      
+      <p>Depending on the event type, you can specify strings in
+      <code>opt_extraInfoSpec</code> to ask for additional information about the
+      request. This is used to provide detailed information on request's data only
+      if explicitly requested.</p>
+      
+      <h2 id="implementation">Implementation details</h2>
+      
+      <p>Several implementation details can be important to understand when developing
+      an extension that uses the web request API:</p>
+      
+      <h3 id="conflict_resolution">Conflict resolution</h3>
+      <p>In the current implementation of the web request API, a request is considered
+      as cancelled if at least one extension instructs to cancel the request. If
+      an extension cancels a request, all extensions are notified by an
+      <code>onErrorOccurred</code> event. Only one extension is allowed to redirect a
+      request or modify a header at a time. If more than one extension attempts to
+      modify the request, the most recently installed extension wins and all others
+      are ignored. An extension is not notified if its instruction to modify or
+      redirect has been ignored.</p>
+      
+      <h3 id="caching">Caching</h3>
+      <p>
+      Chrome employs two caches — an on-disk cache and a very fast in-memory
+      cache.  The lifetime of an in-memory cache is attached to the lifetime of a
+      render process, which roughly corresponds to a tab. Requests that are answered
+      from the in-memory cache are invisible to the web request API. If a request
+      handler changes its behavior (for example, the behavior according to which
+      requests are blocked), a simple page refresh might not respect this changed
+      behavior.  To make sure the behavior change goes through, call
+      <code>handlerBehaviorChanged()</code> to flush the in-memory cache. But don't do
+      it often; flushing the cache is a very expensive operation. You don't need to
+      call <code>handlerBehaviorChanged()</code> after registering or unregistering an
+      event listener.</p>
+      
+      <h3 id="timestamps">Timestamps</h3>
+      <p>
+      The <code>timestamp</code> property of web request events is only guaranteed to
+      be <i>internally</i> consistent. Comparing one event to another event will give
+      you the correct offset between them, but comparing them to the current time
+      inside the extension (via <code>(new Date()).getTime()</code>, for instance)
+      might give unexpected results.
+      </p>
+      
+      <h3 id="error_handling">Error handling</h3>
+      <p>
+      If you try to register an event with invalid arguments, then a JavaScript error
+      will be thrown, and the event handler will not be registered.
+      
+      If an error is thrown while an event is handled, or if an event handler returns
+      an invalid blocking response, an error message is logged to your extension's
+      console and the handler is ignored for that request.
+      </p>
+      
+      <h2 id="examples">Examples</h2>
+      
+      <p>The following example illustrates how to block all requests to
+      <code>www.evil.com</code>:</p>
+      <pre class="prettyprint"><span class="pln">      chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeRequest</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span class="pln">
+        </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">details</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span><span class="pln">cancel</span><span class="pun">:</span><span class="pln"> details</span><span class="pun">.</span><span class="pln">url</span><span class="pun">.</span><span class="pln">indexOf</span><span class="pun">(</span><span class="str">"://www.evil.com/"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1</span><span class="pun">};</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">urls</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">"&lt;all_urls&gt;"</span><span class="pun">]},</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"blocking"</span><span class="pun">]);</span><span class="pln">
+      </span></pre>
+      
+      <p>As this function uses a blocking event handler, it requires the "webRequest"
+      as well as the "webRequestBlocking" permission in the manifest file.</p>
+      
+      <p>The following example achieves the same goal in a more efficient way because
+      requests that are not targeted to <code>www.evil.com</code> do not need to be
+      passed to the extension:</p>
+      <pre class="prettyprint"><span class="pln">      chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeRequest</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span class="pln">
+        </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">details</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span><span class="pln">cancel</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">};</span><span class="pln"> </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">urls</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">"*://www.evil.com/*"</span><span class="pun">]},</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"blocking"</span><span class="pun">]);</span><span class="pln">
+      </span></pre>
+      
+      <p>The following example illustrates how to delete the User-Agent header from
+      all requests:</p>
+      <pre class="prettyprint"><span class="pln">      chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeSendHeaders</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span class="pln">
+        </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">details</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+          </span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> details</span><span class="pun">.</span><span class="pln">requestHeaders</span><span class="pun">.</span><span class="pln">length</span><span class="pun">;</span><span class="pln"> </span><span class="pun">++</span><span class="pln">i</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">details</span><span class="pun">.</span><span class="pln">requestHeaders</span><span class="pun">[</span><span class="pln">i</span><span class="pun">].</span><span class="pln">name </span><span class="pun">===</span><span class="pln"> </span><span class="str">'User-Agent'</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+              details</span><span class="pun">.</span><span class="pln">requestHeaders</span><span class="pun">.</span><span class="pln">splice</span><span class="pun">(</span><span class="pln">i</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+              </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+          </span><span class="pun">}</span><span class="pln">
+          </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span><span class="pln">requestHeaders</span><span class="pun">:</span><span class="pln"> details</span><span class="pun">.</span><span class="pln">requestHeaders</span><span class="pun">};</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">urls</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">"&lt;all_urls&gt;"</span><span class="pun">]},</span><span class="pln">
+        </span><span class="pun">[</span><span class="str">"blocking"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"requestHeaders"</span><span class="pun">]);</span><span class="pln">
+      </span></pre>
+      
+      <p> For more example code, see the <a href="https://developer.chrome.com/extensions/samples#webrequest">web request
+      samples</a>.</p>
+    </dl></section>
+    <section id="toc">
+    <h2>Summary</h2>
+    <table class="api-summary">
+      <tbody><tr>
+        </tr><tr><th colspan="2">Types</th></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#type-RequestFilter">RequestFilter</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#type-BlockingResponse">BlockingResponse</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#type-UploadData">UploadData</a></td></tr>
+        <tr><th colspan="2">Properties</th></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#property-MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES">MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES</a></td>
+        </tr><tr><th colspan="2">Methods</th></tr>
+        <tr><td><a href="https://developer.chrome.com/extensions/webRequest#method-handlerBehaviorChanged">handlerBehaviorChanged</a> −
+            <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">handlerBehaviorChanged</span><span class="pun">(</span><span class="optional"><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+          </td></tr>
+        <tr><th colspan="2">Events</th></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onBeforeRequest">onBeforeRequest</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onBeforeSendHeaders">onBeforeSendHeaders</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onSendHeaders">onSendHeaders</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onHeadersReceived">onHeadersReceived</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onAuthRequired">onAuthRequired</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onResponseStarted">onResponseStarted</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onBeforeRedirect">onBeforeRedirect</a></td></tr>
+          <tr><td><a href="https://developer.chrome.com/extensions/webRequest#event-onCompleted">onCompleted</a></td></tr>
+          <tr><td><a href="./chrome.webRequest - Google Chrome_files/chrome.webRequest - Google Chrome.html">onErrorOccurred</a></td></tr>
+    </tbody></table>
+    </section>
+    <section>
+      <div class="api-reference">
+          <h2 id="types">Types</h2>
+            <div>
+              <h3 id="type-RequestFilter">RequestFilter</h3>
+              <dd>An object describing filters to apply to webRequest events.</dd><table>
+                
+                  <tbody><tr><th colspan="3" id="RequestFilter-properties">properties</th></tr>
+                  <tr id="property-RequestFilter-urls">
+                    <td>array of string</td>
+                    <td>
+                        urls</td>
+                    <td>
+                    
+                    <p>
+                      A list of URLs or URL patterns. Requests that cannot match any of the URLs will be filtered out.
+                    </p></td>
+                  </tr><tr id="property-RequestFilter-types">
+                    <td>array of enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                    <td><span class="optional">(optional)</span>
+                        types</td>
+                    <td>
+                    
+                    <p>
+                      A list of request types. Requests that cannot match any of the types will be filtered out.
+                    </p></td>
+                  </tr><tr id="property-RequestFilter-tabId">
+                    <td>integer</td>
+                    <td><span class="optional">(optional)</span>
+                        tabId</td>
+                    <td>
+                    
+                    </td>
+                  </tr><tr id="property-RequestFilter-windowId">
+                    <td>integer</td>
+                    <td><span class="optional">(optional)</span>
+                        windowId</td>
+                    <td>
+                    
+                    </td>
+                  </tr>
+              </tbody></table>
+            </div>
+            <div>
+              <h3 id="type-HttpHeaders">HttpHeaders</h3>
+              <dd>
+                  array of object
+                </dd><dd>An array of HTTP headers. Each header is represented as a dictionary containing the keys <code>name</code> and either <code>value</code> or <code>binaryValue</code>.</dd><table>
+                
+                
+              </table>
+            </div>
+            <div>
+              <h3 id="type-BlockingResponse">BlockingResponse</h3>
+              <dd>Returns value for event handlers that have the 'blocking' extraInfoSpec applied. Allows the event handler to modify network requests.</dd><table>
+                
+                  <tbody><tr><th colspan="3" id="BlockingResponse-properties">properties</th></tr>
+                  <tr id="property-BlockingResponse-cancel">
+                    <td>boolean</td>
+                    <td><span class="optional">(optional)</span>
+                        cancel</td>
+                    <td>
+                    
+                    <p>
+                      If true, the request is cancelled. Used in onBeforeRequest, this prevents the request from being sent.
+                    </p></td>
+                  </tr><tr id="property-BlockingResponse-redirectUrl">
+                    <td>string</td>
+                    <td><span class="optional">(optional)</span>
+                        redirectUrl</td>
+                    <td>
+                    
+                    <p>
+                      Only used as a response to the onBeforeRequest and onHeadersReceived events. If set, the original request is prevented from being sent/completed and is instead redirected to the given URL. Redirections to non-HTTP schemes such as data: are allowed. Redirects initiated by a redirect action use the original request method for the redirect, with one exception: If the redirect is initiated at the onHeadersReceived stage, then the redirect will be issued using the GET method.
+                    </p></td>
+                  </tr><tr id="property-BlockingResponse-requestHeaders">
+                    <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                    <td><span class="optional">(optional)</span>
+                        requestHeaders</td>
+                    <td>
+                    
+                    <p>
+                      Only used as a response to the onBeforeSendHeaders event. If set, the request is made with these request headers instead.
+                    </p></td>
+                  </tr><tr id="property-BlockingResponse-responseHeaders">
+                    <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                    <td><span class="optional">(optional)</span>
+                        responseHeaders</td>
+                    <td>
+                    
+                    <p>
+                      Only used as a response to the onHeadersReceived event. If set, the server is assumed to have responded with these response headers instead. Only return <code>responseHeaders</code> if you really want to modify the headers in order to limit the number of conflicts (only one extension may modify <code>responseHeaders</code> for each request).
+                    </p></td>
+                  </tr><tr id="property-BlockingResponse-authCredentials">
+                    <td>object</td>
+                    <td><span class="optional">(optional)</span>
+                        authCredentials</td>
+                    <td>
+                    
+                    <p>
+                      Only used as a response to the onAuthRequired event. If set, the request is made using the supplied credentials.
+                    </p>  <table class="innerTable">
+                        <tbody><tr id="property-authCredentials-username">
+                          <td>string</td>
+                          <td>
+                              username</td>
+                          <td>
+                          
+                          </td>
+                        </tr><tr id="property-authCredentials-password">
+                          <td>string</td>
+                          <td>
+                              password</td>
+                          <td>
+                          
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+              </tbody></table>
+            </div>
+            <div>
+              <h3 id="type-UploadData">UploadData</h3>
+              <p class="availability">
+                Since Chrome 23.
+              </p>
+              <dd>Contains data uploaded in a URL request.</dd><table>
+                
+                  <tbody><tr><th colspan="3" id="UploadData-properties">properties</th></tr>
+                  <tr id="property-UploadData-bytes">
+                    <td>any</td>
+                    <td><span class="optional">(optional)</span>
+                        bytes</td>
+                    <td>
+                    
+                    <p>
+                      An ArrayBuffer with a copy of the data.
+                    </p></td>
+                  </tr><tr id="property-UploadData-file">
+                    <td>string</td>
+                    <td><span class="optional">(optional)</span>
+                        file</td>
+                    <td>
+                    
+                    <p>
+                      A string with the file's path and name.
+                    </p></td>
+                  </tr>
+              </tbody></table>
+            </div>
+          <h2 id="properties">Properties</h2>
+          <table>
+            <tbody><tr>
+              <td><span class="type_name">  <code>20</code></span></td>
+              <td><code id="property-MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES">chrome.webRequest.MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES</code></td>
+              <td>
+                <p class="availability">
+                  Since Chrome 23.
+                </p>
+                  The maximum number of times that <code>handlerBehaviorChanged</code> can be called per 10 minute sustained interval. <code>handlerBehaviorChanged</code> is an expensive function call that shouldn't be called often.
+              </td>
+            </tr>
+          </tbody></table>
+          <h2 id="methods">Methods</h2>
+            <div>
+              <h3 id="method-handlerBehaviorChanged">handlerBehaviorChanged
+              </h3>
+              <div class="summary uncapitalize">
+              <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">handlerBehaviorChanged</span><span class="pun">(</span><span class="optional"><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+              </div>
+              <div class="description">
+                <p>
+                  Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to caching. This function call is expensive. Don't call it often.
+                </p>
+                <table>
+                  <tbody><tr><th colspan="3">Parameters</th></tr>
+                    <tr id="property-handlerBehaviorChanged-callback">
+                      <td>function</td>
+                      <td><span class="optional">(optional)</span>
+                          callback</td>
+                      <td>
+                      
+                          <p>
+                              If you specify the <em>callback</em> parameter, it should
+                              be a function that looks like this:
+                          </p>
+                        <code class="prettyprint"><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                      </td>
+                    </tr>
+                </tbody></table>
+              </div>
+            </div>
+          <h2 id="events">Events</h2>
+            <div>
+              <h3 id="event-onBeforeRequest">onBeforeRequest</h3>
+              <div class="description">
+            <p>
+                  Fired when a request is about to occur.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeRequest</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onBeforeRequest-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onBeforeRequest-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-requestBody">
+                                          <td>object</td>
+                                          <td><span class="optional">(optional)</span>
+                                              requestBody</td>
+                                          <td>
+                                          <p class="availability">
+                                            Since Chrome 23.
+                                          </p>
+                                          
+                                          <p>
+                                            Contains the HTTP request body data. Only provided if extraInfoSpec contains 'requestBody'.
+                                          </p>  <table class="innerTable">
+                                              <tbody><tr id="property-requestBody-error">
+                                                <td>string</td>
+                                                <td><span class="optional">(optional)</span>
+                                                    error</td>
+                                                <td>
+                                                
+                                                <p>
+                                                  Errors when obtaining request body data.
+                                                </p></td>
+                                              </tr><tr id="property-requestBody-formData">
+                                                <td>object</td>
+                                                <td><span class="optional">(optional)</span>
+                                                    formData</td>
+                                                <td>
+                                                
+                                                <p>
+                                                  If the request method is POST and the body is a sequence of key-value pairs encoded in UTF8, encoded as either multipart/form-data, or application/x-www-form-urlencoded, this dictionary is present and for each key contains the list of all values for that key. If the data is of another media type, or if it is malformed, the dictionary is not present. An example value of this dictionary is {'key': ['value1', 'value2']}.
+                                                </p></td>
+                                              </tr><tr id="property-requestBody-raw">
+                                                <td>array of     <a href="https://developer.chrome.com/extensions/webRequest#type-UploadData">UploadData</a></td>
+                                                <td><span class="optional">(optional)</span>
+                                                    raw</td>
+                                                <td>
+                                                
+                                                <p>
+                                                  If the request method is PUT or POST, and the body is not already parsed in formData, then the unparsed request body elements are contained in this array.
+                                                </p></td>
+                                              </tr>
+                                            </tbody></table>
+                                          </td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onBeforeSendHeaders">onBeforeSendHeaders</h3>
+              <div class="description">
+            <p>
+                  Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP connection is made to the server, but before any HTTP data is sent. 
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeSendHeaders</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onBeforeSendHeaders-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onBeforeSendHeaders-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-requestHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              requestHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP request headers that are going to be sent out with this request.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onSendHeaders">onSendHeaders</h3>
+              <div class="description">
+            <p>
+                  Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders callbacks are visible by the time onSendHeaders is fired).
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onSendHeaders</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onSendHeaders-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onSendHeaders-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-requestHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              requestHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP request headers that have been sent out with this request.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onHeadersReceived">onHeadersReceived</h3>
+              <div class="description">
+            <p>
+                  Fired when HTTP response headers of a request have been received.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onHeadersReceived</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onHeadersReceived-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onHeadersReceived-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    <p class="availability">
+                                      Since Chrome 31.
+                                    </p>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusLine">
+                                          <td>string</td>
+                                          <td>
+                                              statusLine</td>
+                                          <td>
+                                          
+                                          <p>
+                                            HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line).
+                                          </p></td>
+                                        </tr><tr id="property-details-responseHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              responseHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP response headers that have been received with this response.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onAuthRequired">onAuthRequired</h3>
+              <div class="description">
+            <p>
+                  Fired when an authentication failure is received. The listener has three options: it can provide authentication credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If bad user credentials are provided, this may be called multiple times for the same request.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onAuthRequired</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onAuthRequired-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> callback</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onAuthRequired-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-scheme">
+                                          <td>string</td>
+                                          <td>
+                                              scheme</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The authentication scheme, e.g. Basic or Digest.
+                                          </p></td>
+                                        </tr><tr id="property-details-realm">
+                                          <td>string</td>
+                                          <td><span class="optional">(optional)</span>
+                                              realm</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The authentication realm provided by the server, if there is one.
+                                          </p></td>
+                                        </tr><tr id="property-details-challenger">
+                                          <td>object</td>
+                                          <td>
+                                              challenger</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The server requesting authentication.
+                                          </p>  <table class="innerTable">
+                                              <tbody><tr id="property-challenger-host">
+                                                <td>string</td>
+                                                <td>
+                                                    host</td>
+                                                <td>
+                                                
+                                                </td>
+                                              </tr><tr id="property-challenger-port">
+                                                <td>integer</td>
+                                                <td>
+                                                    port</td>
+                                                <td>
+                                                
+                                                </td>
+                                              </tr>
+                                            </tbody></table>
+                                          </td>
+                                        </tr><tr id="property-details-isProxy">
+                                          <td>boolean</td>
+                                          <td>
+                                              isProxy</td>
+                                          <td>
+                                          
+                                          <p>
+                                            True for Proxy-Authenticate, false for WWW-Authenticate.
+                                          </p></td>
+                                        </tr><tr id="property-details-responseHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              responseHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP response headers that were received along with this response.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusLine">
+                                          <td>string</td>
+                                          <td>
+                                              statusLine</td>
+                                          <td>
+                                          
+                                          <p>
+                                            HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                  <tr id="property-onAuthRequired-callback">
+                                    <td>function</td>
+                                    <td><span class="optional">(optional)</span>
+                                        callback</td>
+                                    <td>
+                                    
+                                        <p>
+                                            If you specify the <em>callback</em> parameter, it should
+                                            be a function that looks like this:
+                                        </p>
+                                      <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="pln"> </span><a href="https://developer.chrome.com/extensions/webRequest#type-BlockingResponse"><span class="typ">BlockingResponse</span></a><span class="pln"> response</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                        <table class="innerTable">
+                                          <tbody><tr id="property-callback-response">
+                                            <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-BlockingResponse">BlockingResponse</a></td>
+                                            <td>
+                                                response</td>
+                                            <td>
+                                            
+                                            </td>
+                                          </tr>
+                                        </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onResponseStarted">onResponseStarted</h3>
+              <div class="description">
+            <p>
+                  Fired when the first byte of the response body is received. For HTTP requests, this means that the status line and response headers are available.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onResponseStarted</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onResponseStarted-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onResponseStarted-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-ip">
+                                          <td>string</td>
+                                          <td><span class="optional">(optional)</span>
+                                              ip</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.
+                                          </p></td>
+                                        </tr><tr id="property-details-fromCache">
+                                          <td>boolean</td>
+                                          <td>
+                                              fromCache</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Indicates if this response was fetched from disk cache.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusCode">
+                                          <td>integer</td>
+                                          <td>
+                                              statusCode</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP status code returned by the server.
+                                          </p></td>
+                                        </tr><tr id="property-details-responseHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              responseHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP response headers that were received along with this response.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusLine">
+                                          <td>string</td>
+                                          <td>
+                                              statusLine</td>
+                                          <td>
+                                          
+                                          <p>
+                                            HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onBeforeRedirect">onBeforeRedirect</h3>
+              <div class="description">
+            <p>
+                  Fired when a server-initiated redirect is about to occur.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onBeforeRedirect</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onBeforeRedirect-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onBeforeRedirect-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-ip">
+                                          <td>string</td>
+                                          <td><span class="optional">(optional)</span>
+                                              ip</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.
+                                          </p></td>
+                                        </tr><tr id="property-details-fromCache">
+                                          <td>boolean</td>
+                                          <td>
+                                              fromCache</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Indicates if this response was fetched from disk cache.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusCode">
+                                          <td>integer</td>
+                                          <td>
+                                              statusCode</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP status code returned by the server.
+                                          </p></td>
+                                        </tr><tr id="property-details-redirectUrl">
+                                          <td>string</td>
+                                          <td>
+                                              redirectUrl</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The new URL.
+                                          </p></td>
+                                        </tr><tr id="property-details-responseHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              responseHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP response headers that were received along with this redirect.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusLine">
+                                          <td>string</td>
+                                          <td>
+                                              statusLine</td>
+                                          <td>
+                                          
+                                          <p>
+                                            HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onCompleted">onCompleted</h3>
+              <div class="description">
+            <p>
+                  Fired when a request is completed.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onCompleted</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onCompleted-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onCompleted-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-ip">
+                                          <td>string</td>
+                                          <td><span class="optional">(optional)</span>
+                                              ip</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.
+                                          </p></td>
+                                        </tr><tr id="property-details-fromCache">
+                                          <td>boolean</td>
+                                          <td>
+                                              fromCache</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Indicates if this response was fetched from disk cache.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusCode">
+                                          <td>integer</td>
+                                          <td>
+                                              statusCode</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP status code returned by the server.
+                                          </p></td>
+                                        </tr><tr id="property-details-responseHeaders">
+                                          <td>    <a href="https://developer.chrome.com/extensions/webRequest#type-HttpHeaders">HttpHeaders</a></td>
+                                          <td><span class="optional">(optional)</span>
+                                              responseHeaders</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The HTTP response headers that were received along with this response.
+                                          </p></td>
+                                        </tr><tr id="property-details-statusLine">
+                                          <td>string</td>
+                                          <td>
+                                              statusLine</td>
+                                          <td>
+                                          
+                                          <p>
+                                            HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              <h3 id="event-onErrorOccurred">onErrorOccurred</h3>
+              <div class="description">
+            <p>
+                  Fired when an error occurs.
+                </p>      
+                  <div>
+                    <h4 title="">addListener
+                    </h4>
+                    <div class="summary uncapitalize">
+                    <code class="prettyprint"><span class="pln"> chrome</span><span class="pun">.</span><span class="pln">webRequest</span><span class="pun">.</span><span class="pln">onErrorOccurred</span><span class="pun">.</span><span class="pln">addListener</span><span class="pun">(</span><span><span class="kwd">function</span><span class="pln"> callback</span></span><span class="pun">)</span><span class="pln"> </span></code>
+                    </div>
+                    <div class="description">
+                      <table class="innerTable">
+                        <tbody><tr><th colspan="3">Parameters</th></tr>
+                          <tr id="property-onErrorOccurred-callback">
+                            <td>function</td>
+                            <td>
+                                callback</td>
+                            <td>
+                            
+                                <p>
+                                    The <em>callback</em> parameter should be a function
+                                    that looks like this:
+                                </p>
+                              <code class="prettyprint"><span class="kwd">function</span><span class="pun">(</span><span class="kwd">object</span><span class="pln"> details</span><span class="pun">)</span><span class="pln"> </span><span class="subdued"><span class="pun">{...}</span></span><span class="pun">;</span></code>
+                                <table class="innerTable">
+                                  <tbody><tr id="property-onErrorOccurred-details">
+                                    <td>object</td>
+                                    <td>
+                                        details</td>
+                                    <td>
+                                    
+                                      <table class="innerTable">
+                                        <tbody><tr id="property-details-requestId">
+                                          <td>string</td>
+                                          <td>
+                                              requestId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.
+                                          </p></td>
+                                        </tr><tr id="property-details-url">
+                                          <td>string</td>
+                                          <td>
+                                              url</td>
+                                          <td>
+                                          
+                                          </td>
+                                        </tr><tr id="property-details-method">
+                                          <td>string</td>
+                                          <td>
+                                              method</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Standard HTTP method.
+                                          </p></td>
+                                        </tr><tr id="property-details-frameId">
+                                          <td>integer</td>
+                                          <td>
+                                              frameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-parentFrameId">
+                                          <td>integer</td>
+                                          <td>
+                                              parentFrameId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.
+                                          </p></td>
+                                        </tr><tr id="property-details-tabId">
+                                          <td>integer</td>
+                                          <td>
+                                              tabId</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.
+                                          </p></td>
+                                        </tr><tr id="property-details-type">
+                                          <td>enum of <code>"main_frame"</code>, <code>"sub_frame"</code>, <code>"stylesheet"</code>, <code>"script"</code>, <code>"image"</code>, <code>"object"</code>, <code>"xmlhttprequest"</code>, or <code>"other"</code></td>
+                                          <td>
+                                              type</td>
+                                          <td>
+                                          
+                                          <p>
+                                            How the requested resource will be used.
+                                          </p></td>
+                                        </tr><tr id="property-details-timeStamp">
+                                          <td>double</td>
+                                          <td>
+                                              timeStamp</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The time when this signal is triggered, in milliseconds since the epoch.
+                                          </p></td>
+                                        </tr><tr id="property-details-ip">
+                                          <td>string</td>
+                                          <td><span class="optional">(optional)</span>
+                                              ip</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.
+                                          </p></td>
+                                        </tr><tr id="property-details-fromCache">
+                                          <td>boolean</td>
+                                          <td>
+                                              fromCache</td>
+                                          <td>
+                                          
+                                          <p>
+                                            Indicates if this response was fetched from disk cache.
+                                          </p></td>
+                                        </tr><tr id="property-details-error">
+                                          <td>string</td>
+                                          <td>
+                                              error</td>
+                                          <td>
+                                          
+                                          <p>
+                                            The error description. This string is <em>not</em> guaranteed to remain backwards compatible between releases. You must not parse and act based upon its content.
+                                          </p></td>
+                                        </tr>
+                                      </tbody></table>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                            </td>
+                          </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+      </div>
+        <h2 id="samples">Sample Extensions</h2>
+        <ul>
+          <li><strong><a href="https://developer.chrome.com/extensions/samples#catblock">CatBlock</a></strong>
+          – I can't has cheezburger!
+      </li>
+        </ul>
+    </section>
+  </div>
+</article>
+    </main>
+
+    <footer id="gc-footer" role="contentinfo" class="span-full">
+      <div class="g-section g-tpl-50-50">
+        <div class="g-unit g-first">
+          <nav class="links">
+            <a href="https://www.google.com/">Google</a><a href="https://developers.google.com/site-terms">Terms of Service</a><a href="http://www.google.com/intl/en/privacy/">Privacy Policy</a><a href="" data-feedback="">Report a bug</a>
+          </nav>
+        </div>
+        <div class="g-unit g-last">
+          <div id="social-buttons">
+            <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 70px; height: 15px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 70px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 15px;" tabindex="0" vspace="0" width="100%" id="I0_1407448544022" name="I0_1407448544022" src="./chrome.webRequest - Google Chrome_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+            <a rel="publisher" target="_blank" href="https://plus.google.com/+GoogleChromeDevelopers?prsrc=3" data-g-label="plus" data-g-event="nav-subfooter">Add us on <span class="element-invisible">Google+</span><img src="./chrome.webRequest - Google Chrome_files/gplus-16.png" data-g-label="plus" data-g-event="nav-subfooter" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+    <script src="./chrome.webRequest - Google Chrome_files/fatnav.js"></script>
+    <script src="./chrome.webRequest - Google Chrome_files/article.js"></script>
+    <script src="./chrome.webRequest - Google Chrome_files/prettify.js"></script>
+    <script src="./chrome.webRequest - Google Chrome_files/search.js"></script>
+    <script src="./chrome.webRequest - Google Chrome_files/api.js"></script>
+    <script src="./chrome.webRequest - Google Chrome_files/site.js"></script>
+  
+
+<iframe name="oauth2relay577810623" id="oauth2relay577810623" src="./chrome.webRequest - Google Chrome_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 2px; display: none; top: 3px; position: absolute; left: -1px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gstl_51 gssb_c" style="width: 100%; display: none; top: -1px; position: absolute; left: 0px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>
